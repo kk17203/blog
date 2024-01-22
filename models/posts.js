@@ -10,7 +10,7 @@ const CommentSchema = new Schema({
 });
 
 // Virtual for comment createdAt format
-CommentSchema.Schema.virtual("formattedCreatedAt").get(function () {
+CommentSchema.virtual("formattedCreatedAt").get(function () {
     // Define Timezone
     const timeZone = "America/Chicago";
 
@@ -32,7 +32,7 @@ const PostSchema = new Schema({
 });
 
 // Virtual for post createdAt format
-PostSchema.Schema.virtual("formattedCreatedAt").get(function () {
+PostSchema.virtual("formattedCreatedAt").get(function () {
     // Define Timezone
     const timeZone = "America/Chicago";
 

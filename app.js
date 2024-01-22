@@ -9,18 +9,19 @@ const bodyParser = require("body-parser");
 const multer = require("multer");
 
 const indexRouter = require("./routes/index");
+const adminRouter = require("./routes/admin");
 
 const app = express();
 
 // Set up mongoose connection
-// const mongoose = require("mongoose");
-// mongoose.set("strictQuery", false);
-// main().catch((err) => console.log(err));
-// async function main() {
-//     console.log("CONNECTING TO DATABASE");
-//     await mongoose.connect(process.env.MONGODB_URI);
-//     console.log("DATABASE CONNECTION SUCCESS");
-// }
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+main().catch((err) => console.log(err));
+async function main() {
+    console.log("CONNECTING TO DATABASE");
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("DATABASE CONNECTION SUCCESS");
+}
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -34,6 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/admin", adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

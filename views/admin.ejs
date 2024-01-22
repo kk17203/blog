@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/stylesheets/admin.css" />
+        <title>Simply Kaitie</title>
+    </head>
+    <body>
+        <p>admin page</p>
+        <form action="" method="POST">
+            <div class="form-container">
+                <label for="entryTitle">Title </label>
+                <input
+                    type="text"
+                    name="entry_title"
+                    id="entryTitle"
+                    placeholder="Title"
+                    required
+                />
+                <label for="entryCategory">Category: </label>
+                <select id="entryCategory" name="entry_category">
+                    <option value="declutter">Declutter</option>
+                    <option value="cooking">Cooking</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="budget">Budget</option>
+                </select>
+                <label for="entryContent">Content </label>
+                <textarea
+                    name="entry_content"
+                    id="entryContent"
+                    cols="30"
+                    rows="10"
+                ></textarea>
+            </div>
+            <input type="hidden" name="action" value="signup" />
+            <button class="entry-submit" type="submit">Submit</button>
+        </form>
+    </body>
+</html>
