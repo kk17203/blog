@@ -1,0 +1,63 @@
+.global-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 10px;
+    background-color: white;
+    height: 100px;
+    line-height: 18px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-icon {
+    font-size: 25px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    position: absolute;
+    top: 45px;
+    left: 40px;
+}
+
+.instagram-icon {
+    font-size: 25px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    position: absolute;
+    top: 45px;
+    right: 40px;
+}
+
+.side-menu {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 110px;
+    left: -200px;
+    background-color: white;
+    /* padding-top: 60px; */
+    text-align: center;
+    transition: 0.3s;
+}
+
+.side-menu ul {
+    margin: 0;
+}
+
+.side-menu a {
+    display: block;
+    padding: 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+.side-menu a:hover {
+    background-color: #2a97aa85;
+}
