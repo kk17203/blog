@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const moment = require("moment-timezone");
 
 const Schema = mongoose.Schema;
 
@@ -39,7 +40,7 @@ PostSchema.virtual("formattedCreatedAt").get(function () {
     // Format the date with specific options and timezone
     const formattedDate = moment(this.createdAt)
         .tz(timeZone)
-        .format("MMM D, YYY [at] h:mm A");
+        .format("MMM D, YYYY [at] h:mm A");
 
     return formattedDate;
 });

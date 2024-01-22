@@ -1,3 +1,22 @@
+body {
+    font: 14px MaisonNeue, Segoe UI, Helvetica Neue, -apple-system, system-ui,
+        BlinkMacSystemFont, Roboto, Arial, sans-serif, Apple Color Emoji,
+        Segoe UI Emoji, Segoe UI Symbol;
+    /* min-height: 100vh; */
+}
+
 .main-container {
     margin-top: 115px;
+}
+
+.blog-container {
+    margin: 60px 15px;
+}
+
+.blog-title {
+    font-weight: 600;
+}
+
+.blog-time {
+    color: rgba(87, 86, 86, 0.751);
 }

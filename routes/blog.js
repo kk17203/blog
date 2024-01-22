@@ -1,10 +1,19 @@
 const express = require("express");
 const router = express.Router();
+const asyncHandler = require("express-async-handler");
+const Post = require("../models/posts");
 
 // GET Declutter Blog page
-router.get("/declutter", (req, res, next) => {
-    res.render("declutter");
-});
+router.get(
+    "/declutter",
+    asyncHandler(async (req, res, next) => {
+        const posts = await Post.find({
+            category: "declutter",
+        });
+
+        res.render("declutter", { posts: posts });
+    })
+);
 
 // GET Budget Blog page
 router.get("/budget", (req, res, next) => {
