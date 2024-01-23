@@ -17,6 +17,10 @@ body {
     font-weight: 600;
 }
 
+.blog-category {
+    color: rgba(87, 86, 86, 0.751);
+}
+
 .blog-time {
     color: rgba(87, 86, 86, 0.751);
 }

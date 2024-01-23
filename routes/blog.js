@@ -8,7 +8,7 @@ router.get(
     "/declutter",
     asyncHandler(async (req, res, next) => {
         const posts = await Post.find({
-            category: "declutter",
+            category: "Declutter",
         });
 
         res.render("declutter", { posts: posts });
@@ -20,7 +20,7 @@ router.get(
     "/budget",
     asyncHandler(async (req, res, next) => {
         const posts = await Post.find({
-            category: "budget",
+            category: "Budget",
         });
 
         res.render("budget", { posts: posts });
@@ -32,7 +32,7 @@ router.get(
     "/cooking",
     asyncHandler(async (req, res, next) => {
         const posts = await Post.find({
-            category: "cooking",
+            category: "Cooking",
         });
 
         res.render("cooking", { posts: posts });
@@ -44,7 +44,7 @@ router.get(
     "/fitness",
     asyncHandler(async (req, res, next) => {
         const posts = await Post.find({
-            category: "fitness",
+            category: "Fitness",
         });
 
         res.render("fitness", { posts: posts });
