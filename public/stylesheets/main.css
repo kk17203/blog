@@ -13,14 +13,37 @@ body {
     margin: 60px 15px;
 }
 
+.blog-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .blog-title {
     font-weight: 600;
 }
 
 .blog-category {
     color: rgba(87, 86, 86, 0.751);
+    font-size: 0.8rem;
 }
 
 .blog-time {
     color: rgba(87, 86, 86, 0.751);
+}
+
+.about-main {
+    margin: 60px 15px;
+}
+
+.about-title {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.list-title {
+    font-weight: 600;
+}
+
+.list-title li {
+    font-weight: 500;
 }
