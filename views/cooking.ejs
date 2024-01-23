@@ -16,7 +16,13 @@
                 <p class="blog-time"><%=post.formattedCreatedAt%></p>
                 <p class="blog-content"><%-post.content%></p>
             </div>
-            <% }) %> <% } %>
+            <% }) %> <% } if(posts.length === 0) { %>
+            <div class="blog-container">
+                <p>
+                    Soon! Soon I will post in this category. Check back later.
+                </p>
+            </div>
+            <% } %>
         </div>
     </body>
 </html>
