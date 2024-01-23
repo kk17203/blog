@@ -7,7 +7,7 @@ const Post = require("../models/posts");
 router.get(
     "/",
     asyncHandler(async (req, res, next) => {
-        const posts = await Post.find();
+        const posts = await Post.find().sort({ createdAt: -1 });
 
         res.render("index", { posts: posts });
     })
