@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="/javascripts/main.js" defer></script>
+
         <link rel="stylesheet" href="/stylesheets/main.css" />
 
         <title>Simply Kaitie</title>
@@ -10,11 +12,44 @@
     <body>
         <%-include('header')%>
         <div class="main-container">
-            <% if(posts) { %> <% posts.forEach (function(post) { %>
-            <div class="blog-container">
-                <p class="blog-title"><%=post.title%></p>
+            <% if(posts) { %> <% posts.forEach (function(post, index) { %>
+            <div class="blog-container" id="blogContainer<%= index %>">
+                <div class="blog-header">
+                    <p class="blog-title"><%=post.title%></p>
+                    <p class="blog-category"><em><%=post.category%></em></p>
+                </div>
                 <p class="blog-time"><%=post.formattedCreatedAt%></p>
-                <p class="blog-content"><%-post.content%></p>
+                <div class="blog-content">
+                    <% if(post.content.length <= 200) { %>
+                    <p
+                        class="blog-full-content"
+                        id="blogFullContent<%= index %>"
+                    >
+                        <%-post.content%>
+                    </p>
+                    <% } else { %>
+                    <p
+                        class="blog-preview-content"
+                        id="blogPreviewContent<%= index %>"
+                    >
+                        <%- post.content.substring(0, 200) + '...' %>
+                    </p>
+                    <p
+                        class="blog-full-content"
+                        id="blogFullContent<%= index %>"
+                        style="display: none"
+                    >
+                        <%-post.content%>
+                    </p>
+                    <button
+                        class="see-more-btn"
+                        id="seeMoreButton<%= index %>"
+                        onclick="toggleContent('<%= index %>')"
+                    >
+                        See More
+                    </button>
+                    <% } %>
+                </div>
             </div>
             <% }) %> <% } if(posts.length === 0) { %>
             <div class="blog-container">

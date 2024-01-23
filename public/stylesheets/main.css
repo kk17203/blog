@@ -60,3 +60,16 @@ body {
 .list-title li {
     font-weight: 500;
 }
+
+.see-more-btn {
+    color: rgba(87, 86, 86, 0.751);
+    font-size: 0.9rem;
+    background: none;
+    border: none;
+    /* color: #2a97aa; */
+    cursor: pointer;
+    /* text-decoration: underline; */
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+}
