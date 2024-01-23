@@ -16,7 +16,7 @@ router.post(
             const newPost = new Post({
                 title: req.body.entry_title,
                 category: req.body.entry_category,
-                content: req.body.entry_content,
+                content: req.body.entry_content.replace(/\r?\n/g, "<br>"),
             });
 
             await newPost.save();

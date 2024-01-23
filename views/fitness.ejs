@@ -10,7 +10,13 @@
     <body>
         <%-include('header')%>
         <div class="main-container">
-            <p>My Fitness Blogs</p>
+            <% if(posts) { %> <% posts.forEach (function(post) { %>
+            <div class="blog-container">
+                <p class="blog-title"><%=post.title%></p>
+                <p class="blog-time"><%=post.formattedCreatedAt%></p>
+                <p class="blog-content"><%-post.content%></p>
+            </div>
+            <% }) %> <% } %>
         </div>
     </body>
 </html>
