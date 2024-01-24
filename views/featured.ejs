@@ -1,0 +1,39 @@
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap"
+/>
+<% if(featuredPosts) { %> <% featuredPosts.forEach (function(post, index) { %>
+<div class="blog-container blog-featured" id="blogContainer<%= index %>">
+    <p class="featured-title">Featured</p>
+    <div class="blog-header">
+        <p class="blog-title"><%=post.title%></p>
+        <p class="blog-category"><em><%=post.category%></em></p>
+    </div>
+    <p class="blog-time"><%=post.formattedCreatedAt%></p>
+    <div class="blog-content">
+        <% if(post.content.length <= 400) { %>
+        <p class="blog-full-content" id="blogFullContent<%= index %>">
+            <%-post.content%>
+        </p>
+        <% } else { %>
+        <p class="blog-preview-content" id="blogPreviewContent<%= index %>">
+            <%- post.content.substring(0, 400) + '...' %>
+        </p>
+        <p
+            class="blog-full-content"
+            id="blogFullContent<%= index %>"
+            style="display: none"
+        >
+            <%-post.content%>
+        </p>
+        <button
+            class="see-more-btn"
+            id="seeMoreButton<%= index %>"
+            onclick="toggleContent('<%= index %>')"
+        >
+            See More
+        </button>
+        <% } %>
+    </div>
+</div>
+<% }) %> <% } %>

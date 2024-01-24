@@ -40,7 +40,7 @@ PostSchema.virtual("formattedCreatedAt").get(function () {
     // Format the date with specific options and timezone
     const formattedDate = moment(this.createdAt)
         .tz(timeZone)
-        .format("MMM D, YYYY [at] h:mm A");
+        .format("MMM D, YYYY");
 
     return formattedDate;
 });

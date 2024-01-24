@@ -11,7 +11,8 @@
     <body>
         <%-include('header')%>
         <div class="main-container">
-            <% if(posts) { %> <% posts.forEach (function(post, index) { %>
+            <%-include('featured')%> <% if(posts) { %> <% posts.forEach
+            (function(post, index) { %>
             <div class="blog-container" id="blogContainer<%= index %>">
                 <div class="blog-header">
                     <p class="blog-title"><%=post.title%></p>
@@ -19,7 +20,7 @@
                 </div>
                 <p class="blog-time"><%=post.formattedCreatedAt%></p>
                 <div class="blog-content">
-                    <% if(post.content.length <= 200) { %>
+                    <% if(post.content.length <= 400) { %>
                     <p
                         class="blog-full-content"
                         id="blogFullContent<%= index %>"
@@ -31,7 +32,7 @@
                         class="blog-preview-content"
                         id="blogPreviewContent<%= index %>"
                     >
-                        <%- post.content.substring(0, 200) + '...' %>
+                        <%- post.content.substring(0, 400) + '...' %>
                     </p>
                     <p
                         class="blog-full-content"
