@@ -1,0 +1,28 @@
+.about-photo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.about-photo {
+    width: 200px;
+    border-radius: 10px;
+}
+
+.about-main {
+    margin: 10px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-title {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.category-content {
+    margin-top: 0px;
+}
+
+.list-title {
+    font-weight: 600;
+}
