@@ -7,9 +7,6 @@ function toggleContent(index) {
 
     const blogContainer = document.getElementById(`blogContainer${index}`);
 
-    console.log(fullContent);
-    console.log("test");
-
     if (fullContent.style.display === "none") {
         previewContent.style.display = "none";
         fullContent.style.display = "block";
