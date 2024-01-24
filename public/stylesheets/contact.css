@@ -22,7 +22,8 @@
 }
 
 .contact-form input,
-.contact-form textarea {
+.contact-form textarea,
+.contact-form select {
     margin: 10px 30px;
     border-radius: 5px;
     border: 0.2px solid black;
@@ -45,4 +46,17 @@
 
 .contact-submit-btn:active {
     box-shadow: inset 0 0 7px rgba(47, 154, 173, 0.466);
+}
+
+/* MDEIA QUERY  */
+@media (min-width: 768px) {
+    .contact-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-form {
+        width: 600px;
+    }
 }

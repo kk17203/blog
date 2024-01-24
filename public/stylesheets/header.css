@@ -11,6 +11,11 @@
     z-index: 10;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.global-header img {
+    height: 100px;
 }
 
 .menu-icon {
@@ -20,7 +25,7 @@
     color: #333;
     cursor: pointer;
     position: absolute;
-    top: 45px;
+    /* top: 45px; */
     left: 40px;
 }
 
@@ -31,7 +36,7 @@
     color: #333;
     cursor: pointer;
     position: absolute;
-    top: 45px;
+    /* top: 45px; */
     right: 40px;
 }
 
@@ -76,4 +81,19 @@
 
 .menu-open .overlay {
     display: block;
+}
+
+/* MDEIA QUERY  */
+@media (min-width: 768px) {
+    .global-header {
+        height: 140px;
+    }
+
+    .global-header img {
+        height: 140px;
+    }
+
+    .side-menu {
+        top: 150px;
+    }
 }

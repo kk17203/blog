@@ -4,38 +4,51 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/stylesheets/admin.css" />
+        <link rel="stylesheet" href="/stylesheets/main.css" />
+        <link rel="stylesheet" href="/stylesheets/contact.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap"
+        />
+
         <title>Simply Kaitie</title>
     </head>
     <body>
-        <p>admin page</p>
-        <form action="" method="POST">
-            <div class="form-container">
-                <label for="entryTitle">Title </label>
-                <input
-                    type="text"
-                    name="entry_title"
-                    id="entryTitle"
-                    placeholder="Title"
-                    required
-                />
-                <label for="entryCategory">Category: </label>
-                <select id="entryCategory" name="entry_category">
-                    <option value="Budget">Budget</option>
-                    <option value="Cooking">Cooking</option>
-                    <option value="Declutter">Declutter</option>
-                    <option value="Faith">Faith</option>
-                    <option value="Fitness">Fitness</option>
-                </select>
-                <label for="entryContent">Content </label>
-                <textarea
-                    name="entry_content"
-                    id="entryContent"
-                    cols="30"
-                    rows="10"
-                ></textarea>
+        <%-include('header')%>
+        <div class="main-container">
+            <div class="contact-container">
+                <p class="contact-title">Admin Page</p>
+                <form action="" method="POST" class="contact-form">
+                    <label for="entryTitle">Title </label>
+                    <input
+                        type="text"
+                        name="entry_title"
+                        id="entryTitle"
+                        placeholder="Title"
+                        required
+                    />
+                    <label for="entryCategory">Category: </label>
+                    <select id="entryCategory" name="entry_category" required>
+                        <option value="" disabled selected>Select One</option>
+                        <option value="Budget">Budget</option>
+                        <option value="Cooking">Cooking</option>
+                        <option value="Declutter">Declutter</option>
+                        <option value="Faith">Faith</option>
+                        <option value="Fitness">Fitness</option>
+                    </select>
+                    <label for="entryContent">Content </label>
+                    <textarea
+                        name="entry_content"
+                        id="entryContent"
+                        cols="30"
+                        rows="30"
+                    ></textarea>
+                    <input type="hidden" name="action" value="signup" />
+                    <button class="contact-submit-btn" type="submit">
+                        Submit
+                    </button>
+                </form>
             </div>
-            <input type="hidden" name="action" value="signup" />
-            <button class="entry-submit" type="submit">Submit</button>
-        </form>
+        </div>
     </body>
 </html>
