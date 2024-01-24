@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="/javascripts/main.js" defer></script>
         <link rel="stylesheet" href="/stylesheets/main.css" />
+        <script src="/javascripts/main.js" defer></script>
 
         <title>Simply Kaitie</title>
     </head>
@@ -20,7 +20,7 @@
                 </div>
                 <p class="blog-time"><%=post.formattedCreatedAt%></p>
                 <div class="blog-content">
-                    <% if(post.content.length <= 400) { %>
+                    <% if(getPostTextContent(post.content).length <= 400) { %>
                     <p
                         class="blog-full-content"
                         id="blogFullContent<%= index %>"
@@ -32,7 +32,8 @@
                         class="blog-preview-content"
                         id="blogPreviewContent<%= index %>"
                     >
-                        <%- post.content.substring(0, 400) + '...' %>
+                        <%- getPostTextContent(post.content).substring(0, 400) +
+                        '...' %>
                     </p>
                     <p
                         class="blog-full-content"

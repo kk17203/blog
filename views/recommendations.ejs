@@ -8,9 +8,23 @@
         <title>Simply Kaitie</title>
     </head>
     <body>
-        <%-include('header')%>
+        <%- include('header') %>
         <div class="main-container">
-            <p>My Recommendations Page</p>
+            <% if (posts) { %> <% posts.forEach(function(post) { %>
+            <div class="favs-container">
+                <div class="fav-title"><%= post.title %></div>
+                <div class="fav-links">
+                    <% if (post.links && post.links.length > 0) { %> <%
+                    post.links.forEach(function(link) { %>
+                    <div class="fav-link"><%- link %></div>
+                    <% }); %> <% } else { %>
+                    <div class="fav-link">No links available</div>
+                    <% } %>
+                </div>
+            </div>
+            <% }); %> <% } else { %>
+            <div>No posts available</div>
+            <% } %>
         </div>
     </body>
 </html>

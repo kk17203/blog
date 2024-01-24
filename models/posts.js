@@ -30,6 +30,7 @@ const PostSchema = new Schema({
     image: { type: String },
     category: { type: String },
     comments: [CommentSchema],
+    links: [{ type: String }],
 });
 
 // Virtual for post createdAt format

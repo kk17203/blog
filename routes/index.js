@@ -2,6 +2,13 @@ const express = require("express");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const Post = require("../models/posts");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
+function getPostTextContent(html) {
+    const dom = new JSDOM(html);
+    return dom.window.document.body.textContent || "";
+}
 
 // GET home page
 router.get(
@@ -17,7 +24,11 @@ router.get(
             createdAt: -1,
         });
 
-        res.render("index", { posts: posts, featuredPosts: featuredPosts });
+        res.render("index", {
+            posts: posts,
+            featuredPosts: featuredPosts,
+            getPostTextContent: getPostTextContent,
+        });
     })
 );
 
