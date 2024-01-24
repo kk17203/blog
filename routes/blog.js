@@ -39,6 +39,18 @@ router.get(
     })
 );
 
+// GET Faith Blog page
+router.get(
+    "/faith",
+    asyncHandler(async (req, res, next) => {
+        const posts = await Post.find({
+            category: "Faith",
+        }).sort({ createdAt: -1 });
+
+        res.render("faith", { posts: posts });
+    })
+);
+
 // GET Fitness Blog page
 router.get(
     "/fitness",
