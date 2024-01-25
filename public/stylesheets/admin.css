@@ -27,12 +27,12 @@
 .edit-btn {
     margin-right: 15px;
     text-decoration: none;
-    color: blue;
+    color: rgba(47, 154, 173, 0.671);
     cursor: pointer;
 }
 
 .delete-btn {
-    color: red;
+    color: rgba(173, 51, 47, 0.712);
     cursor: pointer;
 }
 
