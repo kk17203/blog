@@ -26,7 +26,13 @@
                 </div>
                 <p class="blog-time"><%=post.formattedCreatedAt%></p>
                 <% if(post.image) { %>
-                <img src="<%=post.image%>" alt="Blog Image" class="blog-img" />
+                <div class="blog-img-container">
+                    <img
+                        src="<%=post.image%>"
+                        alt="Blog Image"
+                        class="blog-img"
+                    />
+                </div>
                 <% } %>
                 <div class="blog-content">
                     <% if(getPostTextContent(post.content).length <= 400) { %>
