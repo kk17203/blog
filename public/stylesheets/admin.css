@@ -57,3 +57,60 @@
     background-color: rgba(0, 128, 0, 0.514);
     cursor: pointer;
 }
+
+.admin-sidebar-title {
+    background-color: #51b1c285;
+    margin: 0;
+    padding: 15px;
+    /* text-decoration: underline; */
+}
+
+.admin-sidebar-container {
+    border: 3px solid #2a97aa85;
+    border-radius: 10px;
+}
+
+.admin-verse {
+    text-align: center;
+    color: #4d4d4d;
+    margin: 0;
+    padding: 0 10px;
+}
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-title {
+    margin: 0;
+    text-align: center;
+    font-family: "Dancing Script", cursive;
+    font-size: 2rem;
+    text-decoration: underline;
+    text-decoration-color: rgba(16, 116, 134, 0.678);
+}
+
+.admin-stats {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.analytics-title {
+    display: flex;
+    justify-content: center;
+}
+
+.analytics {
+    display: flex;
+    flex-direction: column;
+    margin: 0 40px;
+}
+
+.analytics p {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid lightblue;
+}

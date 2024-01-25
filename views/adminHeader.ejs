@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/stylesheets/header.css" />
+<script src="/javascripts/header.js" defer></script>
+<script
+    src="https://kit.fontawesome.com/008151671d.js"
+    crossorigin="anonymous"
+></script>
+
+<div class="global-header">
+    <i class="menu-icon fa-solid fa-bars" onclick="toggleMenu()"> </i>
+    <img src="/images/logo2.png" alt="" />
+    <a href="https://www.instagram.com/simply.kaitie/" class="instagram-icon">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+</div>
+
+<div class="overlay" onclick="toggleMenu()" id="overlay"></div>
+
+<div class="side-menu" id="sideMenu">
+    <a href="/">Home</a>
+    <div class="admin-sidebar-container">
+        <p class="admin-sidebar-title">Admin Functions</p>
+        <a href="/admin">Dashboard</a>
+        <a href="/admin/newPost">New Post</a>
+        <a href="/admin/posts">All Posts</a>
+    </div>
+</div>

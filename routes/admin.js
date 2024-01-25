@@ -6,10 +6,31 @@ const multer = require("multer");
 const { Storage } = require("@google-cloud/storage");
 const { v4: uuidv4 } = require("uuid");
 const jsdom = require("jsdom");
+const posts = require("../models/posts");
 const { JSDOM } = jsdom;
 
 // GET home page
-router.get("/", (req, res, next) => {
+router.get(
+    "/",
+    asyncHandler(async (req, res, next) => {
+        const posts = await Post.find().exec();
+        const postImage = await Post.find({
+            image: { $exists: true, $ne: null },
+        });
+        const postLink = await Post.find({
+            links: { $exists: true, $ne: null, $not: { $size: 0 } },
+        });
+
+        res.render("adminDashboard", {
+            posts: posts,
+            postsWithImg: postImage,
+            postsWithLinks: postLink,
+        });
+    })
+);
+
+// GET admin new post page
+router.get("/newPost", (req, res, next) => {
     res.render("admin");
 });
 
@@ -61,7 +82,7 @@ const upload = multer({
 
 // POST for admin form
 router.post(
-    "/",
+    "/newPost",
     upload.single("image"), // Handle single upload
     asyncHandler(async (req, res, next) => {
         try {
