@@ -16,9 +16,23 @@ const transporter = nodemailer.createTransport({
 });
 
 // GET home page
-router.get("/", (req, res, next) => {
-    res.render("contact");
-});
+router.get(
+    "/",
+    asyncHandler(async (req, res, next) => {
+        const successMessage = req.flash("successMessage");
+        const errorMessage = req.flash("errorMessage");
+
+        // Clear the flash messages after declaring to prevent render on next load
+        req.flash("successMessage", null);
+        req.flash("errorMessage", null);
+
+        res.render("contact", {
+            // If the flash message is 0, return null.
+            successMessage: successMessage.length > 0 ? successMessage : null,
+            errorMessage: errorMessage.length > 0 ? errorMessage : null,
+        });
+    })
+);
 
 /* POST Contact form submission. */
 router.post(
@@ -54,11 +68,11 @@ router.post(
             console.log(
                 "Email has been sent!--------------------------------------------------------------------------------"
             );
-            // req.flash("successMessage", "Email has been sent!");
+            req.flash("successMessage", "Email has been sent!");
             return res.redirect("/contact");
         } catch (error) {
             console.error(error);
-            // req.flash("errorMessage", "Error Sending Email");
+            req.flash("errorMessage", "Error Sending Email");
             res.redirect("/");
         }
     })

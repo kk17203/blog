@@ -8,6 +8,9 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const multer = require("multer");
 
+const session = require("express-session");
+const flash = require("connect-flash");
+
 const indexRouter = require("./routes/index");
 const adminRouter = require("./routes/admin");
 const blogRouter = require("./routes/blog");
@@ -37,6 +40,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+    })
+);
+app.use(flash());
 
 app.use("/", indexRouter);
 app.use("/admin", adminRouter);

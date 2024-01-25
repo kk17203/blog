@@ -59,6 +59,16 @@
                     </button>
                 </form>
             </div>
+            <% if(typeof successMessage !== 'undefined' && successMessage) { %>
+            <div class="contact-container">
+                <p><%= successMessage %></p>
+            </div>
+            <% } else if(typeof errorMessage !== 'undefined' && errorMessage) {
+            %>
+            <div class="contact-container">
+                <p><%= errorMessage %></p>
+            </div>
+            <% } %>
         </div>
     </body>
 </html>
