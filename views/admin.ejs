@@ -24,7 +24,12 @@
         <div class="main-container">
             <div class="contact-container">
                 <p class="contact-title">Admin Page</p>
-                <form action="" method="POST" class="contact-form">
+                <form
+                    action=""
+                    method="POST"
+                    class="contact-form"
+                    enctype="multipart/form-data"
+                >
                     <label for="entryTitle">Title </label>
                     <input
                         type="text"
@@ -42,6 +47,17 @@
                         <option value="Faith">Faith</option>
                         <option value="Fitness">Fitness</option>
                     </select>
+                    <label for="image" class="input-file-label" id="fileLabel">
+                        Add Img</label
+                    >
+                    <input
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                        id="image"
+                        class="input-file"
+                    />
+
                     <label for="entryContent">Content </label>
                     <textarea
                         name="entry_content"
