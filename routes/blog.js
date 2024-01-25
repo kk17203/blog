@@ -2,6 +2,13 @@ const express = require("express");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const Post = require("../models/posts");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
+function getPostTextContent(html) {
+    const dom = new JSDOM(html);
+    return dom.window.document.body.textContent || "";
+}
 
 // GET Declutter Blog page
 router.get(
@@ -11,7 +18,10 @@ router.get(
             category: "Declutter",
         }).sort({ createdAt: -1 });
 
-        res.render("declutter", { posts: posts });
+        res.render("declutter", {
+            posts: posts,
+            getPostTextContent: getPostTextContent,
+        });
     })
 );
 
@@ -23,7 +33,10 @@ router.get(
             category: "Budget",
         }).sort({ createdAt: -1 });
 
-        res.render("budget", { posts: posts });
+        res.render("budget", {
+            posts: posts,
+            getPostTextContent: getPostTextContent,
+        });
     })
 );
 
@@ -35,7 +48,10 @@ router.get(
             category: "Cooking",
         }).sort({ createdAt: -1 });
 
-        res.render("cooking", { posts: posts });
+        res.render("cooking", {
+            posts: posts,
+            getPostTextContent: getPostTextContent,
+        });
     })
 );
 
@@ -47,7 +63,10 @@ router.get(
             category: "Faith",
         }).sort({ createdAt: -1 });
 
-        res.render("faith", { posts: posts });
+        res.render("faith", {
+            posts: posts,
+            getPostTextContent: getPostTextContent,
+        });
     })
 );
 
@@ -59,7 +78,10 @@ router.get(
             category: "Fitness",
         }).sort({ createdAt: -1 });
 
-        res.render("fitness", { posts: posts });
+        res.render("fitness", {
+            posts: posts,
+            getPostTextContent: getPostTextContent,
+        });
     })
 );
 
