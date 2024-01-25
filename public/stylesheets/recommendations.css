@@ -1,0 +1,21 @@
+.main-fav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fav-container {
+    margin: 15px 5px;
+    padding: 5px 10px;
+    width: 300px;
+    /* background-color: #91919050; */
+    border: 3px double #2a97aa85;
+    border-radius: 10px;
+}
+
+.fav-title {
+    /* font-weight: 600; */
+    /* text-decoration: underline; */
+    color: rgb(97, 96, 96);
+    /* margin: 0; */
+}
