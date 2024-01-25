@@ -5,6 +5,8 @@ const asyncHandler = require("express-async-handler");
 const multer = require("multer");
 const { Storage } = require("@google-cloud/storage");
 const { v4: uuidv4 } = require("uuid");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 // GET home page
 router.get("/", (req, res, next) => {
@@ -86,7 +88,7 @@ router.post(
                 await newPost.save();
                 console.log("Post Saved");
 
-                return res.redirect("/admin");
+                return res.redirect("/admin/posts");
             }
 
             const fileName = `${uuidv4()}-${file.originalname}`;
@@ -125,7 +127,7 @@ router.post(
                 await newPost.save();
                 console.log("Post Saved");
 
-                return res.redirect("/admin");
+                return res.redirect("/admin/posts");
             });
             blobStream.end(file.buffer);
         } catch (error) {
@@ -133,5 +135,152 @@ router.post(
         }
     })
 );
+
+function getPostTextContent(html) {
+    const dom = new JSDOM(html);
+    return dom.window.document.body.textContent || "";
+}
+
+// GET admin posts page
+router.get(
+    "/posts",
+    asyncHandler(async (req, res, next) => {
+        const posts = await Post.find({ featured: { $exists: false } }).sort({
+            createdAt: -1,
+        });
+
+        const featuredPosts = await Post.find({
+            featured: { $exists: true },
+        }).sort({
+            createdAt: -1,
+        });
+
+        res.render("adminPosts", {
+            posts: posts,
+            featuredPosts: featuredPosts,
+            getPostTextContent: getPostTextContent,
+        });
+    })
+);
+
+// GET request to update BookInstance.
+router.get(
+    "/:id/edit",
+    asyncHandler(async (req, res, next) => {
+        const selectedPost = await Post.findById(req.params.id).exec();
+
+        if (selectedPost === null) {
+            // No results
+            const err = new Error("Post not found.");
+            err.status = 404;
+            return next(err);
+        }
+        console.log(selectedPost);
+        res.render("admin", {
+            selectedPost: selectedPost,
+        });
+    })
+);
+
+// POST for edit form
+router.post(
+    "/:id/edit",
+    upload.single("image"), // Handle single upload
+    asyncHandler(async (req, res, next) => {
+        try {
+            const file = req.file;
+
+            if (!file) {
+                console.log("No file provided");
+
+                const title = req.body.entry_title;
+                const category = req.body.entry_category;
+                const content = req.body.entry_content.replace(
+                    /\r?\n/g,
+                    "<br>"
+                );
+                const links = extractLinks(content);
+
+                const updatedFields = {
+                    title: title,
+                    category: category,
+                    content: content,
+                    links: links,
+                };
+
+                await Post.findByIdAndUpdate(req.params.id, {
+                    ...updatedFields,
+                });
+                console.log("Post Saved no img");
+
+                return res.redirect("/admin/posts");
+            }
+
+            const fileName = `${uuidv4()}-${file.originalname}`;
+            const blob = bucket.file(fileName);
+
+            const blobStream = blob.createWriteStream({
+                metadata: {
+                    contentType: file.mimetype,
+                },
+            });
+
+            blobStream.on("error", (err) => {
+                console.error(err);
+                res.status(500).json({ error: "Failed to upload file" });
+            });
+
+            blobStream.on("finish", async () => {
+                const imageUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+
+                const title = req.body.entry_title;
+                const category = req.body.entry_category;
+                const content = req.body.entry_content.replace(
+                    /\r?\n/g,
+                    "<br>"
+                );
+                const links = extractLinks(content);
+
+                const updatedFields = {
+                    title: title,
+                    category: category,
+                    content: content,
+                    links: links,
+                    image: imageUrl,
+                };
+
+                await Post.findByIdAndUpdate(req.params.id, {
+                    ...updatedFields,
+                });
+                console.log("Post Saved with img");
+
+                return res.redirect("/admin/posts");
+            });
+            blobStream.end(file.buffer);
+        } catch (error) {
+            console.error(error);
+        }
+    })
+);
+
+// Delete entry POST
+router.post(
+    "/:id/delete",
+    asyncHandler(async (req, res, next) => {
+        await Post.findByIdAndDelete(req.params.id).exec();
+        res.redirect("/admin/posts");
+    })
+);
+
+// Hnadle Entry Delete delete on POST
+exports.bookinstance_delete_post = asyncHandler(async (req, res, next) => {
+    // Get details of bookinstance.
+    const bookinstance = await BookInstance.findById(req.params.id)
+        .populate("book")
+        .exec();
+
+    await BookInstance.findByIdAndDelete(req.body.bookinstanceid);
+    res.redirect("/catalog/bookinstances");
+});
 
 module.exports = router;

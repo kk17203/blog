@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/stylesheets/main.css" />
+        <link rel="stylesheet" href="/stylesheets/contact.css" />
+        <link rel="stylesheet" href="/stylesheets/admin.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap"
+        />
+        <script src="/javascripts/main.js" defer></script>
+        <script src="/javascripts/admin.js" defer></script>
+
+        <title>Simply Kaitie</title>
+        <link
+            rel="icon"
+            href="/images/onlySK.png"
+            type="image/png"
+            sizes="32x32 48x48 64x64"
+        />
+    </head>
+    <body>
+        <%-include('header')%>
+        <div class="main-container">
+            <p class="contact-title">Admin Page</p>
+            <!-- FEATURED POST SECTION  -->
+            <% if(featuredPosts) { %> <% featuredPosts.forEach (function(post,
+            index) { %>
+            <div
+                class="blog-container blog-featured"
+                id="featuredBlogContainer<%= index %>"
+            >
+                <p class="featured-title">Featured</p>
+                <div class="blog-header">
+                    <p class="blog-title"><%=post.title%></p>
+                    <p class="blog-category"><em><%=post.category%></em></p>
+                </div>
+                <div class="time-edit-delete">
+                    <p class="blog-time admin-blog-time">
+                        <%=post.formattedCreatedAt%>
+                    </p>
+                    <div class="edit-delete">
+                        <a href="/admin/<%=post._id%>/edit" class="edit-btn"
+                            >Edit</a
+                        >
+                        <p
+                            class="delete-btn"
+                            id="featuredDeleteBtn<%=index%>"
+                            onclick="featuredDeleteConfirm('<%=index%>')"
+                        >
+                            Delete
+                        </p>
+                        <div
+                            class="confirm-container"
+                            id="featuredConfirmContainer<%=index%>"
+                            style="display: none"
+                        >
+                            <div class="yes-no">
+                                <form
+                                    action="/admin/<%=post._id%>/delete"
+                                    method="POST"
+                                >
+                                    <button type="submit" class="yes-btn">
+                                        Yes
+                                    </button>
+                                </form>
+                                <button
+                                    onclick="featuredDeleteConfirm('<%=index%>')"
+                                    class="no-btn"
+                                >
+                                    No
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% if(post.image) { %>
+                <div class="blog-img-container">
+                    <img
+                        src="<%=post.image%>"
+                        alt="Blog Image"
+                        class="blog-img"
+                    />
+                </div>
+                <% } %>
+                <div class="blog-content">
+                    <% if(post.content.length <= 400) { %>
+                    <p
+                        class="blog-full-content"
+                        id="featuredBlogFullContent<%= index %>"
+                    >
+                        <%-post.content%>
+                    </p>
+                    <% } else { %>
+                    <p
+                        class="blog-preview-content"
+                        id="featuredBlogPreviewContent<%= index %>"
+                    >
+                        <%- post.content.substring(0, 400) + '...' %>
+                    </p>
+                    <p
+                        class="blog-full-content"
+                        id="featuredBlogFullContent<%= index %>"
+                        style="display: none"
+                    >
+                        <%-post.content%>
+                    </p>
+                    <button
+                        class="see-more-btn"
+                        id="featuredSeeMoreButton<%= index %>"
+                        onclick="toggleFeaturedContent('<%= index %>')"
+                    >
+                        See More
+                    </button>
+                    <% } %>
+                </div>
+            </div>
+            <!-- ALL POSTS SECTION  -->
+            <% }) %> <% } %> <% if(posts) { %> <% posts.forEach (function(post,
+            index) { %>
+            <div class="blog-container" id="blogContainer<%= index %>">
+                <div class="blog-header">
+                    <p class="blog-title"><%=post.title%></p>
+
+                    <p class="blog-category"><em><%=post.category%></em></p>
+                </div>
+                <div class="time-edit-delete">
+                    <p class="blog-time admin-blog-time">
+                        <%=post.formattedCreatedAt%>
+                    </p>
+                    <div class="edit-delete">
+                        <a href="/admin/<%=post._id%>/edit" class="edit-btn"
+                            >Edit</a
+                        >
+                        <p
+                            class="delete-btn"
+                            id="deleteBtn<%=index%>"
+                            onclick="deleteConfirm('<%=index%>')"
+                        >
+                            Delete
+                        </p>
+                        <div
+                            class="confirm-container"
+                            id="confirmContainer<%=index%>"
+                            style="display: none"
+                        >
+                            <div class="yes-no">
+                                <form
+                                    action="/admin/<%=post._id%>/delete"
+                                    method="POST"
+                                >
+                                    <button type="submit" class="yes-btn">
+                                        Yes
+                                    </button>
+                                </form>
+                                <button
+                                    class="no-btn"
+                                    onclick="deleteConfirm('<%=index%>')"
+                                >
+                                    No
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% if(post.image) { %>
+                <div class="blog-img-container">
+                    <img
+                        src="<%=post.image%>"
+                        alt="Blog Image"
+                        class="blog-img"
+                    />
+                </div>
+                <% } %>
+                <div class="blog-content">
+                    <% if(getPostTextContent(post.content).length <= 400) { %>
+                    <p
+                        class="blog-full-content"
+                        id="blogFullContent<%= index %>"
+                    >
+                        <%-post.content%>
+                    </p>
+                    <% } else { %>
+                    <p
+                        class="blog-preview-content"
+                        id="blogPreviewContent<%= index %>"
+                    >
+                        <%- getPostTextContent(post.content).substring(0, 400) +
+                        '...' %>
+                    </p>
+                    <p
+                        class="blog-full-content"
+                        id="blogFullContent<%= index %>"
+                        style="display: none"
+                    >
+                        <%-post.content%>
+                    </p>
+                    <button
+                        class="see-more-btn"
+                        id="seeMoreButton<%= index %>"
+                        onclick="toggleContent('<%= index %>')"
+                    >
+                        See More
+                    </button>
+                    <% } %>
+                </div>
+            </div>
+            <% }) %> <% } %>
+        </div>
+    </body>
+</html>

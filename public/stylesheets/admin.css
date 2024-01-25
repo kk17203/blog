@@ -6,3 +6,54 @@
 .form-container label {
     display: flex;
 }
+
+.time-edit-delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.edit-delete {
+    display: flex;
+    align-items: center;
+}
+
+.admin-blog-time {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.edit-btn {
+    margin-right: 15px;
+    text-decoration: none;
+    color: blue;
+    cursor: pointer;
+}
+
+.delete-btn {
+    color: red;
+    cursor: pointer;
+}
+
+.confirm-container {
+    width: 100px;
+    border: 3px solid red;
+}
+
+.yes-no {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 0;
+}
+
+.yes-btn {
+    background-color: rgba(255, 0, 0, 0.493);
+    cursor: pointer;
+}
+
+.no-btn {
+    background-color: rgba(0, 128, 0, 0.514);
+    cursor: pointer;
+}

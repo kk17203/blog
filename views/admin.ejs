@@ -36,36 +36,56 @@
                         name="entry_title"
                         id="entryTitle"
                         placeholder="Title"
+                        value="<%= (typeof selectedPost === 'undefined' ? '' : selectedPost.title) %>"
                         required
                     />
                     <label for="entryCategory">Category: </label>
-                    <select id="entryCategory" name="entry_category" required>
-                        <option value="" disabled selected>Select One</option>
-                        <option value="Budget">Budget</option>
-                        <option value="Cooking">Cooking</option>
-                        <option value="Declutter">Declutter</option>
-                        <option value="Faith">Faith</option>
-                        <option value="Fitness">Fitness</option>
+                    <% if(typeof selectedPost === 'undefined'){ %>
+                        <select id="entryCategory" name="entry_category" required>
+                            <option value="" disabled selected>Select One</option>
+                            <option value="Budget" >Budget</option>
+                            <option value="Cooking" >Cooking</option>
+                            <option value="Declutter" >Declutter</option>
+                            <option value="Faith" >Faith</option>
+                            <option value="Fitness" >Fitness</option>
                     </select>
+<% } else { %>
+                    <select id="entryCategory" name="entry_category" required>
+                        <option value="" disabled <%= (selectedPost.category === 'undefined' ? 'selected' : '') %>>Select One</option>
+                        <option value="Budget" <%= (selectedPost.category === 'Budget' ? 'selected' : '') %>>Budget</option>
+                        <option value="Cooking" <%= (selectedPost.category=== 'Cooking' ? 'selected' : '') %>>Cooking</option>
+                        <option value="Declutter" <%= (selectedPost.category === 'Declutter' ? 'selected' : '') %>>Declutter</option>
+                        <option value="Faith" <%= (selectedPost.category === 'Faith' ? 'selected' : '') %>>Faith</option>
+                        <option value="Fitness" <%= (selectedPost.category === 'Fitness' ? 'selected' : '') %>>Fitness</option>
+                    </select>
+                    <% } %>
                     <label for="image" class="input-file-label" id="fileLabel">
                         Add Img</label
-                    >
+                        >
                     <input
-                        type="file"
-                        name="image"
-                        accept="image/*"
-                        id="image"
-                        class="input-file"
+                    type="file"
+                    name="image"
+                    accept="image/*"
+                    id="image"
+                    class="input-file"
                     />
-
+                    <% if (typeof selectedPost === 'undefined') { %>
                     <label for="entryContent">Content </label>
                     <textarea
-                        name="entry_content"
-                        id="entryContent"
-                        cols="30"
-                        rows="30"
+                    name="entry_content"
+                    id="entryContent"
+                    cols="30"
+                    rows="30"
                     ></textarea>
-                    <input type="hidden" name="action" value="signup" />
+                    <% } else { %>
+                                        <label for="entryContent">Content </label>
+                    <textarea
+                    name="entry_content"
+                    id="entryContent"
+                    cols="30"
+                    rows="30"
+                    ><%= selectedPost.content %></textarea>
+                    <% } %>
                     <button class="contact-submit-btn" type="submit">
                         Submit
                     </button>
