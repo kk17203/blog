@@ -97,3 +97,12 @@
         top: 150px;
     }
 }
+
+.login-link {
+    position: fixed;
+    bottom: 5px;
+}
+
+.login-link i {
+    color: lightgray;
+}

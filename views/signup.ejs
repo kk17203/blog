@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/stylesheets/admin.css" />
+        <link rel="stylesheet" href="/stylesheets/main.css" />
+        <link rel="stylesheet" href="/stylesheets/contact.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap"
+        />
+
+        <title>Simply Kaitie</title>
+        <link
+            rel="icon"
+            href="/images/onlySK.png"
+            type="image/png"
+            sizes="32x32 48x48 64x64"
+        />
+    </head>
+    <body>
+        <%-include('adminHeader')%>
+        <div class="main-container">
+            <div class="admin-container">
+                <p class="admin-title">Admin Dashboard</p>
+                <p class="admin-verse">
+                    13) For you formed my inward parts; you knitted me together
+                    in my mother's womb. 14) I praise you, for I am fearfully
+                    and wonderfully made. Wonderful are your works; my soul
+                    knows it very well. <br />Psalm 139
+                </p>
+                <div class="signup-container">
+                    <form action="" method="POST">
+                        <div class="text-input">
+                            <label for="username"
+                                >Username
+                                <input
+                                    type="text"
+                                    name="username"
+                                    placeholder="Username"
+                                    required
+                                />
+                            </label>
+                            <label for="password"
+                                >Password
+                                <input
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    required
+                                />
+                            </label>
+                            <label for="email"
+                                >Email
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    required
+                                />
+                            </label>
+                            <label for="first_name"
+                                >First Name
+                                <input
+                                    type="text"
+                                    name="first_name"
+                                    placeholder="First Name"
+                                    required
+                                />
+                            </label>
+                            <label for="last_name"
+                                >Last Name
+                                <input
+                                    type="text"
+                                    name="last_name"
+                                    placeholder="Last Name"
+                                    required
+                                />
+                            </label>
+                        </div>
+                        <button class="sign-up-button" type="submit">
+                            Sign Up
+                        </button>
+                    </form>
+
+            </div>
+        </div>
+    </body>
+</html>

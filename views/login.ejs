@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/stylesheets/admin.css" />
+        <link rel="stylesheet" href="/stylesheets/main.css" />
+        <link rel="stylesheet" href="/stylesheets/contact.css" />
+                <link rel="stylesheet" href="/stylesheets/login.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap"
+        />
+
+        <title>Simply Kaitie</title>
+        <link
+            rel="icon"
+            href="/images/onlySK.png"
+            type="image/png"
+            sizes="32x32 48x48 64x64"
+        />
+    </head>
+    <body>
+        <%-include('header')%>
+        <div class="main-container">
+            <div class="admin-container">
+                <p class="admin-title">Login</p>
+                <div class="login-container">
+                <form action="" method="POST">
+                    <div class="login-inputs">
+                        <label for="username">
+                            Username
+                        </label>
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Username"
+                                required
+                            />
+                        <label for="password">
+                            Password
+                        </label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Password"
+                                required
+                            />
+                            <button class="login-button" type="submit">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

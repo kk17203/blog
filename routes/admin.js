@@ -13,6 +13,11 @@ const { JSDOM } = jsdom;
 router.get(
     "/",
     asyncHandler(async (req, res, next) => {
+        // Make sure user is logged in
+        if (!req.user || req.user.secret !== process.env.ADMIN_SECRET) {
+            return res.redirect("/");
+        }
+
         const posts = await Post.find().exec();
         const postImage = await Post.find({
             image: { $exists: true, $ne: null },
@@ -31,6 +36,11 @@ router.get(
 
 // GET admin new post page
 router.get("/newPost", (req, res, next) => {
+    // Make sure user is logged in
+    if (!req.user || req.user.secret !== process.env.ADMIN_SECRET) {
+        return res.redirect("/");
+    }
+
     res.render("admin");
 });
 
@@ -166,6 +176,11 @@ function getPostTextContent(html) {
 router.get(
     "/posts",
     asyncHandler(async (req, res, next) => {
+        // Make sure user is logged in
+        if (!req.user || req.user.secret !== process.env.ADMIN_SECRET) {
+            return res.redirect("/");
+        }
+
         const posts = await Post.find({ featured: { $exists: false } }).sort({
             createdAt: -1,
         });
@@ -188,6 +203,11 @@ router.get(
 router.get(
     "/:id/edit",
     asyncHandler(async (req, res, next) => {
+        // Make sure user is logged in
+        if (!req.user || req.user.secret !== process.env.ADMIN_SECRET) {
+            return res.redirect("/");
+        }
+
         const selectedPost = await Post.findById(req.params.id).exec();
 
         if (selectedPost === null) {
