@@ -12,6 +12,12 @@
     text-decoration-color: rgba(16, 116, 134, 0.678);
 }
 
+.contact-email {
+    text-align: center;
+    color: #4d4d4d;
+    margin: 0;
+}
+
 .contact-form {
     display: flex;
     flex-direction: column;
