@@ -22,22 +22,47 @@
     font-size: 25px;
     background: none;
     border: none;
-    color: #333;
+    /* color: #333333af; */
+    color: black;
     cursor: pointer;
     position: absolute;
     /* top: 45px; */
     left: 40px;
 }
 
-.instagram-icon {
-    font-size: 25px;
+.share-icon {
+    font-size: 21px;
     background: none;
-    border: none;
-    color: #333;
+    color: black;
+    /* color: #333333af; */
     cursor: pointer;
     position: absolute;
     /* top: 45px; */
     right: 40px;
+    /* border: 0.5px solid rgba(16, 116, 134, 0.678);
+    border-radius: 5px; */
+    padding: 1px;
+}
+
+.home-icon {
+    font-size: 21px;
+    background: none;
+    color: black;
+    /* color: #333333af; */
+    cursor: pointer;
+    position: absolute;
+    /* top: 45px; */
+    right: 40px;
+    /* border: 0.5px solid rgba(16, 116, 134, 0.678);
+    border-radius: 5px; */
+    padding: 1px;
+}
+
+.side-bar-links {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 25px;
+    padding: 0 25px;
 }
 
 .side-menu {
@@ -67,6 +92,29 @@
     background-color: #51b1c285;
 }
 
+.share-menu {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 110px;
+    right: -200px;
+    background-color: white;
+    /* padding-top: 60px; */
+    text-align: center;
+    transition: 0.3s;
+}
+
+.share-menu a {
+    display: flex;
+    padding: 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+.share-menu a:hover {
+    background-color: #51b1c285;
+}
+
 /* Add styles for dimming overlay */
 .overlay {
     display: none;
@@ -76,11 +124,33 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
+
     /* z-index: 1; */
 }
 
 .menu-open .overlay {
     display: block;
+}
+
+.share-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.share-menu-open .share-overlay {
+    display: block;
+}
+
+.fb-icon,
+.x-icon,
+.sms-icon {
+    font-size: 21px;
+    margin-right: 10px;
 }
 
 /* MDEIA QUERY  */

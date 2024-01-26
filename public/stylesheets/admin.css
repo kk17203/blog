@@ -67,7 +67,7 @@
 
 .admin-sidebar-container {
     border: 3px solid #2a97aa85;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
 }
 
 .admin-verse {
@@ -128,4 +128,8 @@
     text-decoration: none;
     border: 0.2px solid rgba(16, 116, 134, 0.678);
     background-color: rgba(173, 51, 47, 0.466);
+}
+
+.logout-link {
+    border-top: 3px solid #2a97aa85;
 }

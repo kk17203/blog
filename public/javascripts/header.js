@@ -16,3 +16,22 @@ function toggleMenu() {
         sideMenu.style.left = "0px";
     }
 }
+
+function toggleShareMenu() {
+    const body = document.body;
+    const shareMenu = document.getElementById("shareMenu");
+    const overlay = document.getElementById("shareOverlay");
+
+    body.classList.toggle("share-menu-open");
+    if (body.classList.contains("share-menu-open")) {
+        overlay.style.display = "block";
+    } else {
+        overlay.style.display = "none";
+    }
+
+    if (shareMenu.style.right === "0px") {
+        shareMenu.style.right = "-200px";
+    } else {
+        shareMenu.style.right = "0px";
+    }
+}

@@ -8,12 +8,14 @@
 <div class="global-header">
     <i class="menu-icon fa-solid fa-bars" onclick="toggleMenu()"> </i>
     <img src="/images/logo2.png" alt="" />
-    <a href="https://www.instagram.com/simply.kaitie/" class="instagram-icon">
-        <i class="fa-brands fa-instagram"></i>
-    </a>
+    <i
+        class="share-icon fa-solid fa-share-nodes"
+        onclick="toggleShareMenu()"
+    ></i>
 </div>
 
 <div class="overlay" onclick="toggleMenu()" id="overlay"></div>
+<div class="share-overlay" onclick="toggleShareMenu()" id="shareOverlay"></div>
 
 <div class="side-menu" id="sideMenu">
     <a href="/">Home</a>
@@ -25,7 +27,29 @@
     <a href="/recommendations">Shop My Favorites</a>
     <a href="/about">About Me</a>
     <a href="/contact">Contact Me</a>
+    <div class="side-bar-links">
+        <a href="https://www.instagram.com/simply.kaitie/" class="icon">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="" class="icon"><i class="fa-brands fa-pinterest"></i></a>
+    </div>
     <a href="/login" class="login-link"
         ><i class="fa-solid fa-right-to-bracket"></i
     ></a>
+</div>
+
+<div class="share-menu" id="shareMenu">
+    <a
+        href="https://www.facebook.com/sharer/sharer.php?u=www.simplykaitie.com"
+        target="_blank"
+        ><i class="fa-brands fa-facebook fb-icon"></i> Share on Facebook</a
+    >
+    <a
+        href="https://twitter.com/intent/tweet?url=www.simplykaitie.com&text=Check out this page"
+        target="_blank"
+        ><i class="fa-brands fa-x-twitter x-icon"></i> Share on Twitter</a
+    >
+    <a href="sms:?body=Check out this page: www.simplykaitie.com"
+        ><i class="fa-solid fa-message sms-icon"></i> Share via SMS</a
+    >
 </div>
