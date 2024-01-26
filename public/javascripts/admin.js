@@ -43,3 +43,22 @@ function featuredDeleteConfirm(index) {
         }
     });
 }
+
+function openEmailList() {
+    const openBtn = document.getElementById("emailNumber");
+    const list = document.getElementById("emailList");
+
+    if (list.style.display === "none") {
+        list.style.display = "flex";
+    } else {
+        list.style.display = "none";
+    }
+    window.addEventListener("click", function (Event) {
+        const isClickInsideList = list.contains(event.target);
+        const isClickInsideOpenBtn = openBtn.contains(event.target);
+
+        if (!isClickInsideList && !isClickInsideOpenBtn) {
+            list.style.display = "none";
+        }
+    });
+}

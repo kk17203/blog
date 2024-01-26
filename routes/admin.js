@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/posts");
+const Email = require("../models/emails");
 const asyncHandler = require("express-async-handler");
 const multer = require("multer");
 const { Storage } = require("@google-cloud/storage");
@@ -25,11 +26,13 @@ router.get(
         const postLink = await Post.find({
             links: { $exists: true, $ne: null, $not: { $size: 0 } },
         });
+        const emailSubs = await Email.find().exec();
 
         res.render("adminDashboard", {
             posts: posts,
             postsWithImg: postImage,
             postsWithLinks: postLink,
+            emailSubs: emailSubs,
         });
     })
 );

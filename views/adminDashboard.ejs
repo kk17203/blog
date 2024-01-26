@@ -10,6 +10,7 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap"
         />
+        <script src="/javascripts/admin.js" defer></script>
 
         <title>Simply Kaitie</title>
         <link
@@ -34,15 +35,36 @@
                 <div class="admin-stats">
                     <h3 class="analytics-title">Analytics</h3>
                     <div class="analytics">
-                        <p>Number of posts: <span><%=posts.length%></span></p>
-                        <p>
+                        <p class="analytics-item">
+                            Number of posts: <span><%=posts.length%></span>
+                        </p>
+                        <p class="analytics-item">
                             Number of posts w/ image:
                             <span><%=postsWithImg.length%> </span>
                         </p>
-                        <p>
+                        <p class="analytics-item">
                             Number of posts w/ link:
                             <span> <%=postsWithLinks.length%> </span>
                         </p>
+                        <p
+                            class="analytics-item email-number"
+                            id="emailNumber"
+                            onclick="openEmailList()"
+                        >
+                            Number of Email Subscribers:
+                            <span> <%= emailSubs.length %></span>
+                        </p>
+                        <div
+                            class="email-list"
+                            id="emailList"
+                            style="display: none"
+                        >
+                            <% if (emailSubs) { %> <% emailSubs.forEach
+                            (function(email) { %>
+                            <p class="email-email"><%= email.email %></p>
+                            <p class="email-name"><%= email.name %></p>
+                            <% })} %>
+                        </div>
                     </div>
                 </div>
             </div>

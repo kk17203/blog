@@ -178,6 +178,14 @@
     margin-right: 10px;
 }
 
+.fb-icon {
+    color: blue;
+}
+
+.sms-icon {
+    color: green;
+}
+
 /* MDEIA QUERY  */
 @media (min-width: 768px) {
     .global-header {
