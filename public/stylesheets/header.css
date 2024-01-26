@@ -67,11 +67,11 @@
 }
 
 .side-menu {
-    width: 200px;
+    width: 190px;
     height: 100%;
     position: fixed;
     top: 110px;
-    left: -215px;
+    left: -200px;
     background-color: white;
     /* padding-top: 60px; */
     text-align: center;
@@ -79,7 +79,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 15px;
+    padding-left: 10px;
 }
 
 .side-menu ul {
@@ -94,7 +94,7 @@
 }
 
 .side-menu .home-link {
-    padding-right: 140px;
+    padding-right: 130px;
 }
 
 .side-menu .blog-link {
@@ -102,7 +102,7 @@
     padding: 15px;
     color: #333;
     text-decoration: none;
-    padding-right: 100px;
+    padding-right: 90px;
 }
 
 .side-menu .shop-favs-link {
@@ -110,16 +110,16 @@
 }
 
 .side-menu .about-link {
-    padding-right: 110px;
+    padding-right: 100px;
 }
 
 .side-menu .contact-link {
-    padding-right: 100px;
+    padding-right: 90px;
 }
 
 .subscribe-btn {
     display: block;
-    padding: 15px 110px 15px 15px;
+    padding: 15px 100px 15px 15px;
     color: #333;
     text-decoration: none;
     margin: 0;
@@ -133,7 +133,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 19px;
+    padding-left: 16px;
 }
 
 .side-menu a:hover {
@@ -141,7 +141,7 @@
 }
 
 .subscribe-form {
-    margin-left: -15px;
+    margin-left: -8px;
 }
 
 .subscribe-form input {

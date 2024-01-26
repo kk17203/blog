@@ -13,8 +13,6 @@ router.get(
             createdAt: -1,
         });
 
-        console.log(posts);
-
         res.render("recommendations", { posts: posts });
     })
 );
