@@ -17,6 +17,7 @@
 <div class="overlay" onclick="toggleMenu()" id="overlay"></div>
 <div class="share-overlay" onclick="toggleShareMenu()" id="shareOverlay"></div>
 
+<!-- SIDE MENU  -->
 <div class="side-menu" id="sideMenu">
     <a href="/">Home</a>
     <a href="/blog/budget">Budget</a>
@@ -27,6 +28,27 @@
     <a href="/recommendations">Shop My Favorites</a>
     <a href="/about">About Me</a>
     <a href="/contact">Contact Me</a>
+    <p class="subscribe-btn" id="subscribeBtn" onclick="toggleSubscribe()">
+        Subscribe
+    </p>
+    <form
+        action="/contact/subscribe"
+        method="POST"
+        class="subscribe-form"
+        id="subscribeForm"
+        style="display: none"
+    >
+        <label for="name"></label>
+        <input type="text" id="name" name="name" placeholder="Name" required />
+        <label for="subscribeInput"></label>
+        <input
+            type="email"
+            id="subscribeInput"
+            name="subscribeInput"
+            placeholder="Email"
+            required
+        />
+    </form>
     <div class="side-bar-links">
         <a href="https://www.instagram.com/simply.kaitie/" class="icon">
             <i class="fa-brands fa-instagram"></i>
@@ -38,6 +60,7 @@
     ></a>
 </div>
 
+<!-- SHARE MENU  -->
 <div class="share-menu" id="shareMenu">
     <a
         href="https://www.facebook.com/sharer/sharer.php?u=www.simplykaitie.com"

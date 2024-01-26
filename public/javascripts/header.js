@@ -35,3 +35,29 @@ function toggleShareMenu() {
         shareMenu.style.right = "0px";
     }
 }
+
+function toggleSubscribe() {
+    const subscribeBtn = document.getElementById("subscribeBtn");
+    const subscribeForm = document.getElementById("subscribeForm");
+    const subscribeInput = document.getElementById("subscribeInput");
+    const name = document.getElementById("name");
+    if ((subscribeForm.style.display = "none")) {
+        subscribeBtn.style.display = "none";
+        subscribeForm.style.display = "block";
+    } else {
+        subscribeForm.style.display = "none";
+        subscribeBtn.style.display = "block";
+    }
+
+    window.addEventListener("click", function (event) {
+        const isClickInsideContainer = subscribeForm.contains(event.target);
+        const isClickInsideSubscribeBtn = subscribeBtn.contains(event.target);
+
+        if (!isClickInsideContainer && !isClickInsideSubscribeBtn) {
+            subscribeForm.style.display = "none";
+            subscribeBtn.style.display = "block";
+            subscribeInput.value = "";
+            name.value = "";
+        }
+    });
+}

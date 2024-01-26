@@ -92,6 +92,14 @@
     background-color: #51b1c285;
 }
 
+.subscribe-form {
+    margin: 0 10px;
+}
+
+.subscribe-form input {
+    margin-top: 5px;
+}
+
 .share-menu {
     width: 200px;
     height: 100%;
