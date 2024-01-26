@@ -9,6 +9,10 @@
         />
         <link rel="stylesheet" href="/stylesheets/main.css" />
         <link rel="stylesheet" href="/stylesheets/recommendations.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap"
+        />
 
         <title>Simply Kaitie's Top Picks: Shop My Favs</title>
         <link
@@ -21,6 +25,15 @@
     <body>
         <%- include('header') %>
         <div class="main-container main-fav-container">
+            <p class="blog-page-title">Shop My Favs</p>
+            <p class="blog-page-header">
+                <em
+                    >Discover the products that make Kaitie's favorites list.
+                    Shop now for handpicked essentials and elevate your
+                    lifestyle with our top picks.</em
+                >
+            </p>
+
             <% if (posts) { %> <% posts.forEach(function(post) { %>
             <div class="fav-container">
                 <div class="fav-title">

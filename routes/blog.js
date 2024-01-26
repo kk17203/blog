@@ -21,7 +21,7 @@ router.get(
         res.render("declutter", {
             title: "Declutter",
             message:
-                "As a mom, I understand the constant challenge of keeping our spaces organized and clutter-free. Join me as I explore practical decluttering tips and share our journey towards a more simplified life.",
+                "Join me in the quest for organized and clutter-free spaces. Explore practical decluttering tips on our journey to a simplified and harmonious life.",
             posts: posts,
             getPostTextContent: getPostTextContent,
         });
@@ -39,7 +39,7 @@ router.get(
         res.render("budget", {
             title: "Budget",
             message:
-                "Managing a household budget can be a daunting task, but it doesn't have to be. Join me as I share budgeting strategies, frugal living tips, and ways to make the most of your resources.",
+                "Explore budgeting strategies, frugal living tips, and resource optimization for effective household budget management. Join me on this financial journey!",
             posts: posts,
             getPostTextContent: getPostTextContent,
         });
@@ -57,7 +57,7 @@ router.get(
         res.render("cooking", {
             title: "Cooking",
             message:
-                "Embarking on a culinary adventure, I'm excited to share my kitchen escapades. Join me as I explore the world of cooking from the perspective of a mom who's discovering the joy of creating simple, family-friendly meals. It's all about embracing the learning curve and having fun in the kitchen together!",
+                "Embark on a culinary adventure with a mom's joy in creating simple, family-friendly meals. Join me in the kitchen for learning and fun!",
             posts: posts,
             getPostTextContent: getPostTextContent,
         });
@@ -75,7 +75,7 @@ router.get(
         res.render("faith", {
             title: "Faith",
             message:
-                "Navigating life with faith is a journey I cherish, and I'm excited to share it with you here on 'Simply Kaitie.' As a Christian, I find solace and purpose in the belief that Jesus is God's son, offering salvation through His boundless love. Join me in weaving faith into our daily routines, exploring prayerful moments, and reflecting on the profound teachings of scripture.",
+                "Embark on a faith journey with 'Simply Kaitie.' Find solace, purpose, and boundless love in Jesus. Weave faith into daily life and reflect on scripture.",
             posts: posts,
             getPostTextContent: getPostTextContent,
         });

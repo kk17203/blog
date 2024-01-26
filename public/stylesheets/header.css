@@ -62,7 +62,8 @@
     display: flex;
     justify-content: space-evenly;
     font-size: 25px;
-    padding: 0 25px;
+    margin-left: -15px;
+    width: 100%;
 }
 
 .side-menu {
@@ -75,6 +76,10 @@
     /* padding-top: 60px; */
     text-align: center;
     transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 15px;
 }
 
 .side-menu ul {
@@ -88,12 +93,55 @@
     text-decoration: none;
 }
 
+.side-menu .home-link {
+    padding-right: 140px;
+}
+
+.side-menu .blog-link {
+    display: block;
+    padding: 15px;
+    color: #333;
+    text-decoration: none;
+    padding-right: 100px;
+}
+
+.side-menu .shop-favs-link {
+    padding-right: 50px;
+}
+
+.side-menu .about-link {
+    padding-right: 110px;
+}
+
+.side-menu .contact-link {
+    padding-right: 100px;
+}
+
+.subscribe-btn {
+    display: block;
+    padding: 15px 110px 15px 15px;
+    color: #333;
+    text-decoration: none;
+    margin: 0;
+}
+
+.subscribe-btn:hover {
+    background-color: #51b1c285;
+}
+
+.blog-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 19px;
+}
+
 .side-menu a:hover {
     background-color: #51b1c285;
 }
 
 .subscribe-form {
-    margin: 0 10px;
+    margin-left: -15px;
 }
 
 .subscribe-form input {
@@ -121,7 +169,7 @@
     width: 200px;
     height: 100%;
     position: fixed;
-    top: 110px;
+    top: 150px;
     right: -200px;
     background-color: white;
     /* padding-top: 60px; */
