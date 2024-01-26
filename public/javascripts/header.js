@@ -96,25 +96,41 @@ function submitForm(event) {
         .then((data) => {
             // Handle the response data
             console.log(data);
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
 
-            // Display the "Thank You" message
-            const subscribeForm = document.getElementById("subscribeForm");
-            const subscribeBtn = document.getElementById("subscribeBtn");
+            if (data.message === "Thank you for subscribing!") {
+                // Display the "Thank You" message
+                const subscribeForm = document.getElementById("subscribeForm");
+                const subscribeBtn = document.getElementById("subscribeBtn");
 
-            subscribeForm.style.display = "none";
-            subscribeBtn.style.display = "block";
-            subscribeBtn.innerText = "Thank You!";
+                subscribeForm.style.display = "none";
+                subscribeBtn.style.display = "block";
+                subscribeBtn.innerText = "Thank You!";
+            } else if (data.message === "Email already subscribed.") {
+                // Email already exists
+                email.value = null;
+                email.placeholder = "Email Already Subscribed";
+                email.style.backgroundColor = "rgba(255, 0, 0, 0.151)";
+            } else if (data.message === "no name") {
+                // No name
+                email.placeholder = "Email";
+                name.placeholder = "Please Enter Name";
+                name.style.backgroundColor = "rgba(255, 0, 0, 0.151)";
+                email.style.backgroundColor = null;
+            } else if (data.message === "no email") {
+                //No email or invalid email
+                name.placeholder = "Name";
+                email.value = null;
+                name.style.backgroundColor = null;
+                email.placeholder = "Please Enter Valid Email";
+                email.style.backgroundColor = "rgba(255, 0, 0, 0.151)";
+            }
         })
         .catch((error) => {
             // Handle errors
             console.error("Error:", error);
 
             //Display error message
-            const name = document.getElementById("name");
-            const email = document.getElementById("email");
-            name.value = null;
-            email.value = null;
-            name.placeholder = "Email Already Subscribed";
-            email.placeholder = "Please Enter Another";
         });
 }

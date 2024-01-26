@@ -99,6 +99,12 @@
 .subscribe-form input {
     margin-top: 5px;
     width: 90%;
+    border: 0.5px solid rgb(102, 102, 102);
+    border-radius: 3px;
+}
+
+.subscribe-form input:focus {
+    outline: none;
 }
 
 .subscribe-submit {

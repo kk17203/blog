@@ -92,23 +92,40 @@ router.post(
 
             // Check if the email already exists in the database
             const existingEmail = await Email.findOne({
-                email: req.body.email,
+                email: req.body.email.trim(),
             });
 
             if (existingEmail) {
                 // Email already exists, return an error response
-                console.log("existing email");
-                console.log(existingEmail);
+                return res.json({ message: "Email already subscribed." });
+            }
 
-                return res
-                    .status(400)
-                    .json({ error: "Email already subscribed." });
+            if (!req.body.name) {
+                return res.json({
+                    message: "no name",
+                });
+            }
+
+            const validateEmail = (email) => {
+                // Regular expression for a basic email format validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                return emailRegex.test(email);
+            };
+
+            const trimmedName = req.body.name.trim();
+            const trimmedEmail = req.body.email.trim();
+
+            if (!trimmedEmail || !validateEmail(trimmedEmail)) {
+                return res.json({
+                    message: "no email",
+                });
             }
 
             // Create a new Email instance using the data from the request
             const newEmail = new Email({
-                name: req.body.name,
-                email: req.body.email,
+                name: trimmedName,
+                email: trimmedEmail,
             });
 
             // Save the new email to the database
