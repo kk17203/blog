@@ -11,7 +11,7 @@ function toggleMenu() {
     }
 
     if (sideMenu.style.left === "0px") {
-        sideMenu.style.left = "-200px";
+        sideMenu.style.left = "-215px";
     } else {
         sideMenu.style.left = "0px";
     }

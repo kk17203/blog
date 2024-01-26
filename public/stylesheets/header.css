@@ -71,7 +71,7 @@
     height: 100%;
     position: fixed;
     top: 110px;
-    left: -200px;
+    left: -215px;
     background-color: white;
     /* padding-top: 60px; */
     text-align: center;
@@ -169,7 +169,7 @@
     width: 200px;
     height: 100%;
     position: fixed;
-    top: 150px;
+    top: 110px;
     right: -200px;
     background-color: white;
     /* padding-top: 60px; */
@@ -234,6 +234,15 @@
     color: green;
 }
 
+.login-link {
+    position: fixed;
+    bottom: 5px;
+}
+
+.login-link i {
+    color: lightgray;
+}
+
 /* MDEIA QUERY  */
 @media (min-width: 768px) {
     .global-header {
@@ -247,13 +256,8 @@
     .side-menu {
         top: 150px;
     }
-}
 
-.login-link {
-    position: fixed;
-    bottom: 5px;
-}
-
-.login-link i {
-    color: lightgray;
+    .share-menu {
+        top: 150px;
+    }
 }
