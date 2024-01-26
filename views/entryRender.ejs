@@ -1,4 +1,11 @@
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap"
+/>
+
 <div class="main-container">
+    <p class="blog-page-title"><%= title %></p>
+    <p class="blog-page-header"><em><%= message %></em></p>
     <% if(posts) { %> <% posts.forEach (function(post, index) { %>
     <div class="blog-container" id="blogContainer<%= index %>">
         <div class="blog-header">
