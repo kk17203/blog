@@ -31,23 +31,28 @@
     <p class="subscribe-btn" id="subscribeBtn" onclick="toggleSubscribe()">
         Subscribe
     </p>
+    <!-- <p class="error-message" id="errorMessage" style="display: none"></p> -->
     <form
         action="/contact/subscribe"
         method="POST"
         class="subscribe-form"
         id="subscribeForm"
         style="display: none"
+        enctype="multipart/form-data"
     >
         <label for="name"></label>
         <input type="text" id="name" name="name" placeholder="Name" required />
-        <label for="subscribeInput"></label>
+        <label for="email"></label>
         <input
             type="email"
-            id="subscribeInput"
-            name="subscribeInput"
+            id="email"
+            name="email"
             placeholder="Email"
             required
         />
+        <button class="subscribe-submit" onclick="submitForm(event)">
+            Submit
+        </button>
     </form>
     <div class="side-bar-links">
         <a href="https://www.instagram.com/simply.kaitie/" class="icon">

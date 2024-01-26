@@ -3,6 +3,9 @@ const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
+const Email = require("../models/emails");
+const multer = require("multer");
+const multerUpload = multer();
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -74,6 +77,49 @@ router.post(
             console.error(error);
             req.flash("errorMessage", "Error Sending Email");
             res.redirect("/");
+        }
+    })
+);
+
+// Route for handling the subscription form submission
+router.post(
+    "/subscribe",
+    multerUpload.none(),
+    asyncHandler(async (req, res, next) => {
+        try {
+            console.log("REq body email");
+            console.log(req.body.email);
+
+            // Check if the email already exists in the database
+            const existingEmail = await Email.findOne({
+                email: req.body.email,
+            });
+
+            if (existingEmail) {
+                // Email already exists, return an error response
+                console.log("existing email");
+                console.log(existingEmail);
+
+                return res
+                    .status(400)
+                    .json({ error: "Email already subscribed." });
+            }
+
+            // Create a new Email instance using the data from the request
+            const newEmail = new Email({
+                name: req.body.name,
+                email: req.body.email,
+            });
+
+            // Save the new email to the database
+            await newEmail.save();
+
+            // Respond with a success message
+            res.json({ message: "Thank you for subscribing!" });
+        } catch (error) {
+            // Handle errors
+            console.error("Error:", error);
+            res.status(500).json({ error: "Internal Server Error" });
         }
     })
 );
