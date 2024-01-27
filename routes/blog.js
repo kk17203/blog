@@ -39,7 +39,7 @@ router.get(
         res.render("budget", {
             title: "Budget",
             message:
-                "Explore budgeting strategies, frugal living tips, and resource optimization for effective household budget management. Join me on this financial journey!",
+                "Explore budgeting strategies, frugal living tips, and how to optimize effective household budget management. Join me on this financial journey!",
             posts: posts,
             getPostTextContent: getPostTextContent,
         });
