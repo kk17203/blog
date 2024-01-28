@@ -76,6 +76,13 @@ body {
     border-radius: 10px;
 }
 
+.blog-content img {
+    max-width: 250px;
+    max-height: 200px;
+    border-radius: 10px;
+    /* margin-left: 50%; */
+}
+
 .see-more-btn {
     color: rgba(87, 86, 86, 0.751);
     font-size: 0.9rem;
