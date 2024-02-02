@@ -4,63 +4,67 @@ const User = require("../models/users");
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 
-// GET login page
 router.get("/", (req, res, next) => {
-    res.render("signup", {
-        message: "",
-    });
+    res.redirect("/");
 });
 
-// POST for sign-up form
-router.post(
-    "/",
-    asyncHandler(async (req, res, next) => {
-        const action = req.body.action;
+// GET login page
+// router.get("/", (req, res, next) => {
+//     res.render("signup", {
+//         message: "",
+//     });
+// });
 
-        const { username, password, email, first_name, last_name } = req.body;
+// // POST for sign-up form
+// router.post(
+//     "/",
+//     asyncHandler(async (req, res, next) => {
+//         const action = req.body.action;
 
-        // Make username all lowercase and take out any spaces. Including leading and trailing
-        const processedUsername = username.toLowerCase().trim();
-        const processedEmail = email.trim();
-        const processedFirstName = first_name.trim();
-        const processedLastName = last_name.trim();
+//         const { username, password, email, first_name, last_name } = req.body;
 
-        const existingUser = await User.findOne({
-            username: processedUsername,
-        });
-        if (existingUser) {
-            return res.render("signup", {
-                message: "Username already exists. Please choose another",
-            });
-        }
-        // Hash and Salt password before save
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
+//         // Make username all lowercase and take out any spaces. Including leading and trailing
+//         const processedUsername = username.toLowerCase().trim();
+//         const processedEmail = email.trim();
+//         const processedFirstName = first_name.trim();
+//         const processedLastName = last_name.trim();
 
-        //Create a new user with User model
-        const newUser = new User({
-            username: processedUsername,
-            password: hashedPassword, // Save the hash password
-            email: processedEmail,
-            first_name: processedFirstName,
-            last_name: processedLastName,
-            loginHistory: {
-                timestamp: new Date(),
-                ipAddress: req.ip,
-            },
-        });
+//         const existingUser = await User.findOne({
+//             username: processedUsername,
+//         });
+//         if (existingUser) {
+//             return res.render("signup", {
+//                 message: "Username already exists. Please choose another",
+//             });
+//         }
+//         // Hash and Salt password before save
+//         const saltRounds = 10;
+//         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        // Save newUser to DB
-        await newUser.save();
+//         //Create a new user with User model
+//         const newUser = new User({
+//             username: processedUsername,
+//             password: hashedPassword, // Save the hash password
+//             email: processedEmail,
+//             first_name: processedFirstName,
+//             last_name: processedLastName,
+//             loginHistory: {
+//                 timestamp: new Date(),
+//                 ipAddress: req.ip,
+//             },
+//         });
 
-        // Log the user in automatically by creating a session
-        req.login(newUser, (err) => {
-            if (err) {
-                return next(err);
-            }
-            res.redirect("/admin");
-        });
-    })
-);
+//         // Save newUser to DB
+//         await newUser.save();
+
+//         // Log the user in automatically by creating a session
+//         req.login(newUser, (err) => {
+//             if (err) {
+//                 return next(err);
+//             }
+//             res.redirect("/admin");
+//         });
+//     })
+// );
 
 module.exports = router;
